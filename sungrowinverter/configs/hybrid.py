@@ -146,5 +146,5 @@ HYBRID_CALCULATED_REGISTERS: tuple[CalcRegister, ...] = (
     CalcRegister("total_export_energy", "self.data['total_export_from_pv'] + self.data['total_export_from_battery']", unit_of_measure=KILO_WATT_HOUR),
     CalcRegister("daily_batery_charge", "self.data['daily_battery_charge_from_pv'] + self.data['daily_charge_from_grid']", unit_of_measure=KILO_WATT_HOUR),
     CalcRegister("total_batery_charge", "self.data['total_battery_charge_from_pv'] + self.data['total_charge_from_grid']", unit_of_measure=KILO_WATT_HOUR),
-    CalcRegister("inverter_efficiency", "int((self.data['daily_energy_yield'] / self.data['daily_pv_generation']) * 100)", unit_of_measure=PERCENTAGE, description="Energy yield from the days pv generation")  
+    CalcRegister("inverter_efficiency", "int((self.data['daily_energy_yield'] / (self.data['daily_pv_generation'] + 0.001)) * 100)", unit_of_measure=PERCENTAGE, description="Energy yield from the days pv generation")  
 )
